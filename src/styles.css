@@ -51,10 +51,14 @@ h1, #choiceText {
 }
 
 #playAgain{
+    display: none;
     font-size: 20px;
     height: 5rem;
     width: 20rem;
     border-radius: 8px;
     cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 

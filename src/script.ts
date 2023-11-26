@@ -118,8 +118,11 @@ function gameWinner() {
     computerChoice.style.display = "flex";
     userChoice = undefined;
     computerChoice = undefined;
-}
 
+    if(refreshButton){
+        refreshButton.style.display = "flex";
+    }
+}
 
 refreshButton?.addEventListener("click", () => {
     location.reload();
