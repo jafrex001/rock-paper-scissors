@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+h1, #choiceText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.options img {
+    height: 40vh;
+    width: 30vw;
+    cursor: pointer;
+}
+
+#computerThink{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+
+}
+
+#computerrock, #computerpaper, #computerscissors{
+    display: none;
+}
+
+#userWins, #computerWins, #gameDraw{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+}
+
+#playAgainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#playAgain{
+    font-size: 20px;
+    height: 5rem;
+    width: 20rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
