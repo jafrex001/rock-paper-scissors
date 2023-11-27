@@ -1,19 +1,20 @@
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
-const computerrock = document.getElementById("computerrock");
-const computerpaper = document.getElementById("computerpaper");
-const computerscissors = document.getElementById("computerscissors");
-const choiceText = document.getElementById("choiceText");
-const computerThink = document.getElementById("computerThink");
-const userWins = document.getElementById("userWins");
-const computerWins = document.getElementById("computerWins");
-const gameDraw = document.getElementById("gameDraw");
-const refreshButton = document.getElementById("playAgain");
+const rock = document.getElementById("rock") as HTMLImageElement | null;
+const paper = document.getElementById("paper") as HTMLImageElement | null;
+const scissors = document.getElementById("scissors") as HTMLImageElement | null;
+const computerrock = document.getElementById("computerrock") as HTMLImageElement | null;
+const computerpaper = document.getElementById("computerpaper") as HTMLImageElement | null;
+const computerscissors = document.getElementById("computerscissors") as HTMLImageElement | null;
+const choiceText = document.getElementById("choiceText") as HTMLHeadingElement | null;
+const computerThink = document.getElementById("computerThink") as HTMLHeadingElement | null;
+const userWins = document.getElementById("userWins") as HTMLHeadingElement | null;
+const computerWins = document.getElementById("computerWins") as HTMLHeadingElement | null;
+const gameDraw = document.getElementById("gameDraw") as HTMLHeadingElement | null;
+const refreshButton = document.getElementById("playAgain") as HTMLButtonElement;
 
 let userChoice: any;
 let computerChoice: any = randomComputerChoice();
 
+enableEventListeners();
 
 function choiceRock() {
     userChoice = rock;
@@ -27,8 +28,8 @@ function choiceRock() {
     if (computerThink) {
         computerThink.style.display = "flex";
     }
-    setTimeout(displayComputerChoice, 1000);
 
+    setTimeout(displayComputerChoice, 200);
 
 };
 
@@ -64,9 +65,6 @@ function choiceScissors() {
 
 };
 
-rock?.addEventListener("click", choiceRock);
-paper?.addEventListener("click", choicePaper);
-scissors?.addEventListener("click", choiceScissors);
 
 function randomComputerChoice() {
     const choices = [computerrock, computerpaper, computerscissors]
@@ -119,12 +117,27 @@ function gameWinner() {
     userChoice = undefined;
     computerChoice = undefined;
 
-    if(refreshButton){
-        refreshButton.style.display = "flex";
-    }
+    disableEventListeners();
+
+    refreshButton.style.display = "flex";
+
 }
 
-refreshButton?.addEventListener("click", () => {
+refreshButton.addEventListener("click", () => {
     location.reload();
+    enableEventListeners();
 })
 
+
+
+function enableEventListeners() {
+    rock?.addEventListener("click", choiceRock);
+    paper?.addEventListener("click", choicePaper);
+    scissors?.addEventListener("click", choiceScissors);
+}
+
+function disableEventListeners() {
+    rock?.removeEventListener("click", choiceRock);
+    paper?.removeEventListener("click", choicePaper);
+    scissors?.removeEventListener("click", choiceScissors);
+}

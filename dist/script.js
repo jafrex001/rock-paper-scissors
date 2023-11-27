@@ -13,6 +13,7 @@ const gameDraw = document.getElementById("gameDraw");
 const refreshButton = document.getElementById("playAgain");
 let userChoice;
 let computerChoice = randomComputerChoice();
+enableEventListeners();
 function choiceRock() {
     userChoice = rock;
     if (paper && scissors) {
@@ -25,7 +26,7 @@ function choiceRock() {
     if (computerThink) {
         computerThink.style.display = "flex";
     }
-    setTimeout(displayComputerChoice, 1000);
+    setTimeout(displayComputerChoice, 200);
 }
 ;
 function choicePaper() {
@@ -58,9 +59,6 @@ function choiceScissors() {
     setTimeout(displayComputerChoice, 1000);
 }
 ;
-rock === null || rock === void 0 ? void 0 : rock.addEventListener("click", choiceRock);
-paper === null || paper === void 0 ? void 0 : paper.addEventListener("click", choicePaper);
-scissors === null || scissors === void 0 ? void 0 : scissors.addEventListener("click", choiceScissors);
 function randomComputerChoice() {
     const choices = [computerrock, computerpaper, computerscissors];
     const randomChoice = Math.floor(Math.random() * choices.length);
@@ -103,10 +101,20 @@ function gameWinner() {
     computerChoice.style.display = "flex";
     userChoice = undefined;
     computerChoice = undefined;
-    if (refreshButton) {
-        refreshButton.style.display = "flex";
-    }
+    disableEventListeners();
+    refreshButton.style.display = "flex";
 }
-refreshButton === null || refreshButton === void 0 ? void 0 : refreshButton.addEventListener("click", () => {
+refreshButton.addEventListener("click", () => {
     location.reload();
+    enableEventListeners();
 });
+function enableEventListeners() {
+    rock === null || rock === void 0 ? void 0 : rock.addEventListener("click", choiceRock);
+    paper === null || paper === void 0 ? void 0 : paper.addEventListener("click", choicePaper);
+    scissors === null || scissors === void 0 ? void 0 : scissors.addEventListener("click", choiceScissors);
+}
+function disableEventListeners() {
+    rock === null || rock === void 0 ? void 0 : rock.removeEventListener("click", choiceRock);
+    paper === null || paper === void 0 ? void 0 : paper.removeEventListener("click", choicePaper);
+    scissors === null || scissors === void 0 ? void 0 : scissors.removeEventListener("click", choiceScissors);
+}
